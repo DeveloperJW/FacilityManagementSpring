@@ -10,16 +10,12 @@
     <context:component-scan base-package="com.oop" ></context:component-scan>
 
     <bean id="facilityAddress" class="com.oop.model.Facility.FacilityAddressImpl" scope="prototype"/>
-    <bean id="facilityAddress2" class="com.oop.model.Facility.FacilityAddressImpl" scope="prototype"/>
     <bean id="facilityManagement" class="com.oop.model.Facility.FacilityManagementImpl" scope="prototype"/>
     <bean id="facilityService" class="com.oop.model.Service.FacilityService" scope="prototype">
             <property name="facility" ref="facility"/>
     </bean>
     <bean id="facility" class="com.oop.model.Facility.FacilityImpl" scope="prototype">
         <property name="facilityAddress" ref="facilityAddress"/>
-    </bean>
-    <bean id="facility2" class="com.oop.model.Facility.FacilityImpl" scope="prototype">
-        <property name="facilityAddress" ref="facilityAddress2"/>
     </bean>
 
 

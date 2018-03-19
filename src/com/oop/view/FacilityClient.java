@@ -8,7 +8,6 @@ import javafx.application.Application;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.util.ArrayList;
 
 public class FacilityClient {
     public static void main(String args[]) throws Exception {
@@ -34,10 +33,12 @@ public class FacilityClient {
         facilityAddress.setCity("Chicago");
         facilityAddress.setState("IL");
         facilityAddress.setZip("606026");
+        //call getFacilityInformation and check if information is added correctly.
+        System.out.println(facility.getFacilityInformation());
 
         //set up for 2nd facility and facility address
         //FacilityService facilityService2 = (FacilityService) context.getBean("facilityService");
-        Facility facility2 = (Facility) context.getBean("facility2");
+        Facility facility2 = (Facility) context.getBean("facility");
         facility2.setFacilityId("2");
         facility2.setFacilityName("Cuneo Hall");
         facility2.setCapacity(300);
@@ -52,6 +53,8 @@ public class FacilityClient {
         facilityAddress2.setCity("Chicago");
         facilityAddress2.setState("IL");
         facilityAddress2.setZip("606026");
+        //call getFacilityInformation and check if information is added correctly.
+        System.out.println(facility2.getFacilityInformation());
 
         //Bootstrapping the FacilityManagement instantiation using factory
         FacilityManagement facilityManagement = (FacilityManagement) context.getBean("facilityManagement");

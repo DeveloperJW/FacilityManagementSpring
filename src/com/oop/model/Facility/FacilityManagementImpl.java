@@ -48,7 +48,7 @@ public class FacilityManagementImpl implements FacilityManagement {
 
 
     public String listFacilityDetail(){
-        String result="";
+        String result="The details about the facility is as followings: "+"\n";
         for (Facility facility: facilityArrayList){
             result+=facility.getFacilityDetail()+"\n";
         }

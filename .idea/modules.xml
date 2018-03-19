@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/IdeaProjectsUltimate.iml" filepath="$PROJECT_DIR$/IdeaProjectsUltimate.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FacilityManagementSpring.iml" filepath="$PROJECT_DIR$/FacilityManagementSpring.iml" />
     </modules>
   </component>
 </project>

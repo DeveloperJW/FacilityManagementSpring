@@ -1,71 +1,29 @@
 package com.oop.model.Facility;
 
-public class FacilityAddress {
-    private String addressId;
-    private String street;
-    private String unit;
-    private String city;
-    private String state;
-    private String zip;
+public interface FacilityAddress {
+    public String getAddressId();
 
-    public FacilityAddress(){
-        //default constructor
-    }
-    //Address
-    public String getAddressId(){
-        return addressId;
-    }
-
-    public void setAddressId(String newAddressId){
-        this.addressId=newAddressId;
-    }
+    public void setAddressId(String newAddressId);
     //street
-    public String getStreet(){
-        return street;
-    }
+    public String getStreet();
 
-    public void setStreet(String newStreet){
-        this.street=newStreet;
-    }
+    public void setStreet(String newStreet);
     //unit
-    public String getUnit(){
-        return unit;
-    }
+    public String getUnit();
 
-    public void setUnit(String newwUnit){
-        this.unit=newwUnit;
-    }
+    public void setUnit(String newwUnit);
     //city
-    public String getCity(){
-        return city;
-    }
+    public String getCity();
 
-    public void setCity(String newCity){
-        this.city=newCity;
-    }
+    public void setCity(String newCity);
     //state
-    public String getState(){
-        return state;
-    }
+    public String getState();
 
-    public void setState(String newState){
-        this.state=newState;
-    }
+    public void setState(String newState);
     //zip code
-    public String getZip(){
-        return zip;
-    }
+    public String getZip();
 
-    public void setZip(String newZip){
-        this.zip=newZip;
-    }
+    public void setZip(String newZip);
 
-    public String toString(){
-        String result="";
-        result="The address of the facility is: "+this.unit+" "+this.street+", "+this.city+", "
-                +this.state+", "+this.zip;
-        return result;
-    }
-
-
+    public String toString();
 }

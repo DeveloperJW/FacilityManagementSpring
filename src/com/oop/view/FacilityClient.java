@@ -16,9 +16,9 @@ public class FacilityClient {
         System.out.println("********** Application Context instantiated! **********");
         //Spring to inject the right object implementation in FacilityService for facility using Setter Injection
         //Also, bootstrapping the FacilityService instantiation using factory.
-        FacilityService facilityService = (FacilityService) context.getBean("facilityService");
-
-        Facility facility = facilityService.getFacility();
+        //FacilityService facilityService = (FacilityService) context.getBean("facilityService");
+        //Facility facility = facilityService.getFacility();
+        Facility facility=(Facility) context.getBean("facility");
         facility.setFacilityId("1");
         facility.setFacilityName("Loyola Hall");
         facility.setCapacity(100);
@@ -36,9 +36,8 @@ public class FacilityClient {
         facilityAddress.setZip("606026");
 
         //set up for 2nd facility and facility address
-        FacilityService facilityService2 = (FacilityService) context.getBean("facilityService");
-
-        Facility facility2 = facilityService.getFacility();
+        //FacilityService facilityService2 = (FacilityService) context.getBean("facilityService");
+        Facility facility2 = (Facility) context.getBean("facility2");
         facility2.setFacilityId("2");
         facility2.setFacilityName("Cuneo Hall");
         facility2.setCapacity(300);
@@ -46,8 +45,7 @@ public class FacilityClient {
         facility2.setInUse(false);
 
         //Spring to inject the right object implementation in Facility object for Facility Address using Setter Injection
-        FacilityAddress facilityAddress2 = facility.getFacilityAddress();
-
+        FacilityAddress facilityAddress2 = facility2.getFacilityAddress();
         facilityAddress2.setAddressId("2");
         facilityAddress2.setStreet("5678 W Loyola Hall");
         facilityAddress2.setUnit("Unit 333");
@@ -63,6 +61,18 @@ public class FacilityClient {
         //System.out.println(facilityManagement.listFacilityDetail());
 
         // Print out an order summary
+        facilityManagement.listFacilities();
+
+        //Now we need to test if add detail works
+        System.out.println("*****************************************************************");
+        facility2.addFacilityDetail("This building is under some construction now. ");
+        System.out.println("After adding some details to Facility 2. The results are: ");
+        facilityManagement.listFacilities();
+
+        //now we need to test if remove works
+        System.out.println("*****************************************************************");
+        facilityManagement.removeFacility(facility);
+        System.out.println("After removing the first facility, the results are as: ");
         facilityManagement.listFacilities();
     }
 }

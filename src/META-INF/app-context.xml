@@ -18,6 +18,9 @@
     <bean id="facility" class="com.oop.model.Facility.FacilityImpl" scope="prototype">
         <property name="facilityAddress" ref="facilityAddress"/>
     </bean>
+    <bean id="facility2" class="com.oop.model.Facility.FacilityImpl" scope="prototype">
+        <property name="facilityAddress" ref="facilityAddress2"/>
+    </bean>
 
 
 </beans>

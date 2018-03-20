@@ -2,98 +2,38 @@ package com.oop.model.FacilityMaintenance;
 
 import java.util.Date;
 
-public class Maintenance {
-    private String maintenanceId;
-    private String buildingId;
-    private String unitId;
-    private String problemType;
-    private String workerName;
-    private String workerContactNum;
-    private Date startDateTime;
-    private Date endDateTime;
-    private MaintenanceRequest request;
-
-    public Maintenance(){
-        //default constructor
-    }
+public interface Maintenance {
     //methods
-    public String getMaintenanceId(){
-        return maintenanceId;
-    }
+    public String getMaintenanceId();
 
-    public void setMaintenanceId(String newMaintId){
-        this.maintenanceId=newMaintId;
-    }
+    public void setMaintenanceId(String newMaintId);
 
-    public String getBuildingId(){
-        return buildingId;
-    }
+    public String getFacilityId();
 
-    public void setBuildingId(String newBuildingId){
-        this.buildingId=newBuildingId;
-    }
+    public void setFacilityId(String newBuildingId);
 
-    public String getUnitId(){
-        return unitId;
-    }
+    public String getProblemType();
 
-    public void setUnitId(String newUnitId){
-        this.unitId=newUnitId;
-    }
+    public void setProblemType(String newProblemType);
 
-    public String getProblemType(){
-        return problemType;
-    }
+    public String getWorkerName();
 
-    public void setProblemType(String newProblemType){
-        this.problemType=newProblemType;
-    }
+    public void setWorkerName(String newWorkerName);
 
-    public String getWorkerName(){
-        return workerName;
-    }
+    public String getWorkerContactNum();
 
-    public void setWorkerName(String newWorkerName){
-        this.workerName=newWorkerName;
-    }
+    public void setWorkerContactNum(String newNumber);
 
-    public String getWorkerContactNum(){
-        return workerContactNum;
-    }
+    public Date getStartDateTime() ;
+    public void setStartDateTime(Date newStartDate);
 
-    public void setWorkerContactNum(String newNumber){
-        this.workerContactNum=newNumber;
-    }
+    public Date getEndDateTime();
 
-    public Date getStartDateTime() {
-        return startDateTime;
-    }
-    public void setStartDateTime(Date newStartDate){
-        this.startDateTime=newStartDate;
-    }
+    public void setEndDateTime(Date newEndDate);
 
-    public Date getEndDateTime(){
-        return endDateTime;
-    }
+    public long getTimeDurationInHour(Date start, Date end);
 
-    public void setEndDateTime(Date newEndDate){
-        this.endDateTime=newEndDate;
-    }
+    public MaintenanceRequest getRequest();
 
-    public long getTimeDurationInHour(Date start, Date end){
-        return (end.getTime()-start.getTime())/(60*60*1000);
-    }
-
-    public MaintenanceRequest getRequest() {
-        return request;
-    }
-
-    public String toString(){
-        String result="";
-        result="MaintenanceID: "+this.maintenanceId+"\n";
-        result+="Problem Type: "+this.problemType+"\n";
-        result+="Worker Name: "+this.workerName+"\n";
-        result+="Worker Contact Number: "+this.workerContactNum.toString();
-        return result;
-    }
+    public String toString();
 }

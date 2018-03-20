@@ -4,63 +4,29 @@ import com.oop.model.Facility.Facility;
 
 import java.util.Date;
 
-public class MaintenanceCost extends Maintenance{
-    private String maintenanceReqId;
-    private double materialCost;
-    private static double laborHourlyRate=25;
-    private double laborCost;
-    private boolean paidOrNot;
-    private Maintenance maintenance;
-
-    public MaintenanceCost(Maintenance m){
-        //super();
-        this.maintenance=m;
-
-    }
+public interface MaintenanceCost extends Maintenance{
 
     //methods
-    public String getMaintenanceReqId(){
-        return maintenanceReqId;
-    }
+    public String getMaintenanceReqId();
 
-    public void setMaintenanceReqId(String newReqId){
-        this.maintenanceReqId=newReqId;
-    }
+    public void setMaintenanceReqId(String newReqId);
 
-    public double getMaterialCost(){
-        return materialCost;
-    }
+    public double getMaterialCost();
 
-    public void setMaterialCost(double newMaterialCost){
-        this.materialCost=newMaterialCost;
-    }
+    public void setMaterialCost(double newMaterialCost);
 
     /**
      * getLaborCost() method
      * @return the total labor cost based on maintenance time duration
      */
-    public double getLaborCost(){
-        Date startTime=maintenance.getStartDateTime();
-        Date endTime=maintenance.getEndDateTime();
-        long TimeDuration=maintenance.getTimeDurationInHour(startTime,endTime);
-        return TimeDuration*laborHourlyRate;
+    public double getLaborCost();
 
-    }
+    public void setLaborCost(double newLaborCost);
 
-    public void setLaborCost(double newLaborCost){
-        this.laborCost=newLaborCost;
-    }
+    public double getTotalCost();
 
-    public double getTotalCost(){
-        return materialCost+laborCost;
-    }
+    public boolean getPaidOrNot();
 
-    public boolean getPaidOrNot(){
-        return paidOrNot;
-    }
-
-    public void setPaidOrNot(Boolean newPaymentStatus){
-        this.paidOrNot=newPaymentStatus;
-    }
+    public void setPaidOrNot(Boolean newPaymentStatus);
 
 }

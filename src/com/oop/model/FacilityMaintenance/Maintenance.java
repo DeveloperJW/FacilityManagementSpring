@@ -33,7 +33,5 @@ public interface Maintenance {
 
     public long getTimeDurationInHour(Date start, Date end);
 
-    public MaintenanceRequest getRequest();
-
     public String toString();
 }

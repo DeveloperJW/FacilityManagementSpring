@@ -10,7 +10,7 @@ public class MaintenanceImpl {
     private String workerContactNum;
     private Date startDateTime;
     private Date endDateTime;
-    private MaintenanceRequest request;
+    //private MaintenanceRequest request;
 
     public MaintenanceImpl(){
         //default constructor
@@ -75,9 +75,6 @@ public class MaintenanceImpl {
         return (end.getTime()-start.getTime())/(60*60*1000);
     }
 
-    public MaintenanceRequest getRequest() {
-        return request;
-    }
 
     public String toString(){
         String result="";

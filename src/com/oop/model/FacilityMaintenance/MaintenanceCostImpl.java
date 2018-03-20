@@ -12,9 +12,7 @@ public class MaintenanceCostImpl extends MaintenanceImpl{
     private boolean paidOrNot;
     private Maintenance maintenance;
 
-    public MaintenanceCostImpl(Maintenance m){
-        //super();
-        this.maintenance=m;
+    public MaintenanceCostImpl(){
 
     }
 

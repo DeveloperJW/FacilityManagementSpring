@@ -1,65 +1,28 @@
 package com.oop.model.FacilityUse;
 import java.util.Date;
 
-public class Inspection {
-    private String inspectionId;
-    private String unitId;
-    private String inpectorName;
-    private String inspectionResult;
-    private Date InspectionDate;
-    private FacilitySchedule facilitySchedule;
-
-    public Inspection(FacilitySchedule schedule){
-        //default constructor
-        this.facilitySchedule=schedule;
-    }
+public interface Inspection {
     ///methods
-    public String getInspectionId(){
-        return inspectionId;
-    }
+    public String getInspectionId();
 
-    public void setInspectionId(String newInspectionId){
-        this.inspectionId=newInspectionId;
-    }
+    public void setInspectionId(String newInspectionId);
 
-    public String getUnitId(){
-        return unitId;
-    }
+    public String getFacilityId();
 
-    public void setUnitId(String newUnitId){
-        this.unitId=newUnitId;
-    }
+    public void setFacilityId(String newUnitId);
 
-    public String getInpectorName(){
-        return inpectorName;
-    }
+    public String getInspectorName();
 
-    public void setInpectorName(String newName){
-        this.inpectorName=newName;
-    }
+    public void setInspectorName(String newName);
 
-    public String getInspectionResult(){
-        return inspectionResult;
-    }
+    public String getInspectionResult();
 
-    public void setInspectionResult(String newResult){
-        this.inspectionResult=newResult;
-    }
+    public void setInspectionResult(String newResult);
 
-    public Date getInspectionDate(){
-        return InspectionDate;
-    }
+    public Date getInspectionDate();
 
-    public void setInspectionDate(Date newDate){
-        this.InspectionDate=newDate;
-    }
+    public void setInspectionDate(Date newDate);
 
-    public String toString(){
-        String result="";
-        result="The information about Inspection is as followings:"+"\n";
-        result+="Inspection requested by "+facilitySchedule.getCustomerId()+"\n";
-        result+="Inspection requested on date"+InspectionDate+"\n";
-        return result;
-    }
+    public String toString();
 
 }

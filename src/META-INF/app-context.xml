@@ -14,9 +14,24 @@
     <bean id="facilityService" class="com.oop.model.Service.FacilityService" scope="prototype">
             <property name="facility" ref="facility"/>
     </bean>
+    <bean id="customerService" class="com.oop.model.Service.CustomerService" scope="prototype">
+        <property name="customer" ref="customer"/>
+    </bean>
     <bean id="facility" class="com.oop.model.Facility.FacilityImpl" scope="prototype">
         <property name="facilityAddress" ref="facilityAddress"/>
     </bean>
+    <bean id="customer" class="com.oop.model.FacilityUse.CustomerImpl" scope="prototype">
+        <!-- to be completed.-->
+    </bean>
+    <bean id="facilitySchedule" class="com.oop.model.FacilityUse.FacilityScheduleImpl" scope="prototype"></bean>
+    <bean id="inspectionMgt" class="com.oop.model.FacilityUse.InspectionMgtImpl" scope="prototype"></bean>
+    <bean id="inspection" class="com.oop.model.FacilityUse.InspectionImpl" scope="prototype"></bean>
+    <bean id="usage" class="com.oop.model.FacilityUse.UsageImpl" scope="prototype">
+        <property name="facility" ref="facility"/>
+        <property name="facilitySchedule" ref="facilitySchedule"/>
+        <property name="customer" ref="customer"/>
+    </bean>
+    <bean id="usageMgt" class="com.oop.model.FacilityUse.UsageMgtImpl" scope="prototype"></bean>
 
 
 </beans>

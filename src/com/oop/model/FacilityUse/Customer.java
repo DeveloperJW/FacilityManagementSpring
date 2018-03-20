@@ -1,72 +1,29 @@
 package com.oop.model.FacilityUse;
 
-public class Customer {
-    private String customerId;
-    private String firstName;
-    private String lastName;
-    private String contactNumber;
-    private String address;
-    private String ssn;
+public interface Customer {
+    public String getCustomerId();
 
-    public Customer(){
-        //default constructor
-    }
+    public void setCustomerId(String newCustId);
 
-    //methods
-    public String getCustomerId(){
-        return customerId;
-    }
+    public String getFirstName();
 
-    public void setCustomerId(String newCustId){
-        this.customerId=newCustId;
-    }
+    public void setFirstName(String newFirstName);
 
-    public String getFirstName(){
-        return firstName;
-    }
+    public String getLastName();
 
-    public void setFirstName(String newFirstName){
-        this.firstName=newFirstName;
-    }
+    public void setLastName(String newLastName);
 
-    public String getLastName(){
-        return lastName;
-    }
+    public String getAddress();
 
-    public void setLastName(String newLastName){
-        this.lastName=newLastName;
-    }
+    public void setAddress(String newAdd);
 
-    public String getAddress(){
-        return address;
-    }
+    public String getContactNumber();
 
-    public void setAddress(String newAdd){
-        this.address=newAdd;
-    }
+    public void setContactNumber(String newNum);
 
-    public String getContactNumber(){
-        return contactNumber;
-    }
+    public String getSsn();
 
-    public void setContactNumber(String newNum){
-        this.contactNumber=newNum;
-    }
+    public void setSsn(String newSsn);
 
-    public String getSsn(){
-        return ssn;
-    }
-
-    public void setSsn(String newSsn){
-        this.ssn=newSsn;
-    }
-
-    public String toString(){
-        String result="";
-        result="CustomerName: "+this.lastName+", "+this.firstName+"\n";
-        result+="CutomerAddress: "+this.address+"\n";
-        result+="Customer Contact Number: "+this.contactNumber+"\n";
-
-        return result;
-    }
+    public String toString();
 }

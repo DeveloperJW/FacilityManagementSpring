@@ -4,19 +4,20 @@ import com.oop.model.Facility.Facility;
 
 import java.util.Date;
 
-public class MaintenanceCostImpl extends MaintenanceImpl{
+public class MaintenanceCostImpl implements MaintenanceCost{
     private String maintenanceReqId;
     private double materialCost;
     private static double laborHourlyRate=25;
     private double laborCost;
     private boolean paidOrNot;
-    private Maintenance maintenance;
 
     public MaintenanceCostImpl(){
 
     }
 
     //methods
+
+
     public String getMaintenanceReqId(){
         return maintenanceReqId;
     }
@@ -37,12 +38,9 @@ public class MaintenanceCostImpl extends MaintenanceImpl{
      * getLaborCost() method
      * @return the total labor cost based on maintenance time duration
      */
-    public double getLaborCost(){
-        Date startTime=maintenance.getStartDateTime();
-        Date endTime=maintenance.getEndDateTime();
-        long TimeDuration=maintenance.getTimeDurationInHour(startTime,endTime);
+    public double getLaborCost(Date start, Date end){
+        long TimeDuration=(end.getTime()-start.getTime())/(60*60*1000);
         return TimeDuration*laborHourlyRate;
-
     }
 
     public void setLaborCost(double newLaborCost){

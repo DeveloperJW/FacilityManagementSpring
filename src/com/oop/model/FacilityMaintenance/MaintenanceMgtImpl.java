@@ -4,11 +4,9 @@ package com.oop.model.FacilityMaintenance;
 
 import java.util.ArrayList;
 
-public class MaintenanceMgtImpl {
+public class MaintenanceMgtImpl implements MaintenanceMgt {
+
     private ArrayList<Maintenance> maintenances=new ArrayList<Maintenance>();
-    private ArrayList<MaintenanceRequest> maintReqList=new ArrayList<MaintenanceRequest>();
-    private ArrayList<Maintenance> maintDoneList=new ArrayList<Maintenance>();
-    private ArrayList<FacilityProblem> problemsList=new ArrayList<FacilityProblem>();
 
 
     public MaintenanceMgtImpl(){
@@ -19,8 +17,8 @@ public class MaintenanceMgtImpl {
         return maintenances;
     }
 
-    public ArrayList<MaintenanceRequest> listMaintRequests(){
-        return maintReqList;
+    public void setMaintenances(ArrayList<Maintenance> maintenances) {
+        this.maintenances = maintenances;
     }
 
     public void listMaintenance(){
@@ -29,15 +27,15 @@ public class MaintenanceMgtImpl {
         }
     }
 
-    public Object listMaintenanceRequests(){
-        return maintReqList;
+    public void listMaintenanceRequests(){
+        for (Maintenance maintenance:maintenances){
+            System.out.println(maintenance.getMaintenanceRequest());
+        }
     }
 
-    public void scheduleMaintenance(MaintenanceRequest newReq,FacilityProblem newPro){
-        maintReqList.add(newReq);
-        //when new maintenance is scheduled, we also need to add facility problem to list
-        problemsList.add(newPro);
-        System.out.println("The maintenance request is saved. ");
+    public void scheduleMaintenance(Maintenance newM){
+        maintenances.add(newM);
+        System.out.println("New Maintenance is scheduled. ");
     }
 
     public void addMaintenance(Maintenance newM){
@@ -47,7 +45,6 @@ public class MaintenanceMgtImpl {
     public void finishMaintenance(Maintenance finishedM){
         if (maintenances.contains(finishedM)){
             maintenances.remove(finishedM);
-            maintDoneList.add(finishedM);
             System.out.println("The maintenance is removed from todo list and added to done list. ");
         }
         else{
@@ -55,25 +52,12 @@ public class MaintenanceMgtImpl {
         }
     }
 
-
-    public double calcMaintenanceCostForFacility(MaintenanceCost newMCost){
-        double costAmt=newMCost.getTotalCost();
-        return costAmt;
+    public void listFacilityProblems(){
+        for (Maintenance maintenance: maintenances){
+            System.out.println(maintenance.getFacilityProblem());
+        }
     }
 
-    public double calcProblemRateForFacility(MaintenanceCost newMCost){
-        double rate=calcMaintenanceCostForFacility(newMCost)/calcDownTimeForFacility(newMCost);
-        return rate;
-
-    }
-
-    public double calcDownTimeForFacility(Maintenance newM){
-        return newM.getTimeDurationInHour(newM.getStartDateTime(),newM.getEndDateTime());
-    }
-
-    public Object listFacilityProblems(){
-        return problemsList;
-    }
 
 
 }

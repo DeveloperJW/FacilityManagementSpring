@@ -2,7 +2,7 @@ package com.oop.model.FacilityMaintenance;
 
 import com.oop.model.Facility.Facility;
 
-public interface FacilityProblem extends MaintenanceRequest {
+public interface FacilityProblem {
 
     public String getMaintProblemId();
 

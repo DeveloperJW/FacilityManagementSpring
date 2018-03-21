@@ -7,23 +7,18 @@ import java.util.ArrayList;
 public interface MaintenanceMgt {
 
     public ArrayList<Maintenance> getMaintenances();
-    public ArrayList<MaintenanceRequest> listMaintRequests();
+
+    public void setMaintenances(ArrayList<Maintenance> maintenances);
 
     public void listMaintenance();
 
-    public Object listMaintenanceRequests();
+    public void listMaintenanceRequests();
 
-    public void scheduleMaintenance(MaintenanceRequest newReq,FacilityProblem newPro);
+    public void scheduleMaintenance(Maintenance newM);
 
     public void addMaintenance(Maintenance newM);
 
     public void finishMaintenance(Maintenance finishedM);
 
-    public double calcMaintenanceCostForFacility(Maintenance newM);
-
-    public double calcProblemRateForFacility(Maintenance newM);
-
-    public double calcDownTimeForFacility(Maintenance newM);
-
-    public Object listFacilityProblems();
+    public void listFacilityProblems();
 }

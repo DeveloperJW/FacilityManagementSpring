@@ -1,10 +1,8 @@
 package com.oop.view;
 
-import com.oop.model.Facility.*;
-import com.oop.model.FacilityMaintenance.*;
-import com.oop.model.FacilityUse.*;
-import com.oop.model.Service.FacilityService;
-import javafx.application.Application;
+import com.oop.model.Facility.Facility;
+import com.oop.model.Facility.FacilityAddress;
+import com.oop.model.Facility.FacilityManagement;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

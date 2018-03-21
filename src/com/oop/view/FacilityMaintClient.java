@@ -77,27 +77,6 @@ public class FacilityMaintClient {
         //Spring to inject the right object implementation for Maintenance using Setter Injection
         //Also, bootstrapping the InspectionMgt using factory.
 
-        //set up the first example Maintenance
-        Maintenance maintenance=(Maintenance) context.getBean("maintenance");
-        maintenance.setFacilityId(facility.getFacilityId());
-        maintenance.setWorkerName("Mike Rose");
-        maintenance.setMaintenanceId("Maintenance-1");
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        Date d_s = sdf.parse("10/03/2018");
-        Date d_e=sdf.parse("12/03/2018");
-        maintenance.setStartDateTime(d_s);
-        maintenance.setEndDateTime(d_e);
-
-        //set up the second example Maintenance
-        Maintenance maintenance2=(Maintenance) context.getBean("maintenance");
-        maintenance2.setFacilityId(facility.getFacilityId());
-        maintenance2.setWorkerName("Mike Rose");
-        maintenance2.setMaintenanceId("Maintenance-1");
-        Date d_s2 = sdf.parse("15/03/2018");
-        Date d_e2=sdf.parse("17/03/2018");
-        maintenance2.setStartDateTime(d_s2);
-        maintenance2.setEndDateTime(d_e2);
-
         //set up facility problem example
         FacilityProblem facilityProblem=(FacilityProblem) context.getBean("facilityProblem");
         facilityProblem.setMaintProblemId("Problem-1");
@@ -115,43 +94,84 @@ public class FacilityMaintClient {
         //set up Maintenance request
         MaintenanceRequest maintenanceRequest=(MaintenanceRequest) context.getBean("maintenanceRequest");
         maintenanceRequest.setCustomer(customer);
-        maintenanceRequest.setCustomerId(customer.getCustomerId());
         maintenanceRequest.setFacility(facility);
         maintenanceRequest.setReqId("Req-1");
+        /** simpleDateFormat*/
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         Date reqDate=sdf.parse("09/03/2018");
         maintenanceRequest.setReqDate(reqDate);
 
         //set up second maintenance request
         MaintenanceRequest maintenanceRequest2=(MaintenanceRequest) context.getBean("maintenanceRequest");
         maintenanceRequest2.setCustomer(customer2);
-        maintenanceRequest2.setCustomerId(customer2.getCustomerId());
         maintenanceRequest2.setFacility(facility2);
         maintenanceRequest2.setReqId("Req-2");
         Date reqDate2=sdf.parse("13/03/2018");
-        maintenanceRequest.setReqDate(reqDate2);
+        maintenanceRequest2.setReqDate(reqDate2);
+
+
+        //set up the first example Maintenance
+        //Maintenance maintenance=(Maintenance) context.getBean("maintenance");
+        MaintenanceImpl maintenance=new MaintenanceImpl();
+        maintenance.setWorkerName("Mike Rose");
+        maintenance.setMaintenanceId("Maintenance-1");
+        Date d_s = sdf.parse("10/03/2018");
+        Date d_e=sdf.parse("12/03/2018");
+        maintenance.setStartDateTime(d_s);
+        maintenance.setEndDateTime(d_e);
+        maintenance.setFacilityProblem(facilityProblem);
+        //might change from String to Facility Problem
+
+        //set up the second example Maintenance
+        //Maintenance maintenance2=(Maintenance) context.getBean("maintenance");
+        MaintenanceImpl maintenance2=new MaintenanceImpl();
+        maintenance2.setFacilityId(facility.getFacilityId());
+        maintenance2.setWorkerName("Mike Rose");
+        maintenance2.setMaintenanceId("Maintenance-2");
+        Date d_s2 = sdf.parse("15/03/2018");
+        Date d_e2=sdf.parse("17/03/2018");
+        maintenance2.setStartDateTime(d_s2);
+        maintenance2.setEndDateTime(d_e2);
+        maintenance2.setFacilityProblem(facilityProblem2);
+
+        //set up the first example Maintenance cost
+        MaintenanceCost maintenanceCost=(MaintenanceCost) context.getBean("maintenanceCost");
+        maintenanceCost.setMaterialCost(100);
+        maintenanceCost.setLaborCost(maintenanceCost.getLaborCost(maintenance.getStartDateTime(),maintenance.getEndDateTime()));
+
+
+        //set up the second example Maintenance cost
+        MaintenanceCost maintenanceCost2=(MaintenanceCost) context.getBean("maintenanceCost");
+        maintenanceCost2.setMaterialCost(1000);
+        maintenanceCost2.setLaborCost(maintenanceCost2.getLaborCost(maintenance2.getStartDateTime(),maintenance2.getEndDateTime()));
+
+        //assign example maintenanceCost to example maintenance
+        maintenance.setMaintenanceCost(maintenanceCost);
+        maintenance2.setMaintenanceCost(maintenanceCost2);
+
+        //
+        System.out.println(maintenance.toString());
+        System.out.println(maintenance2.toString());
 
         //scheduleMaintenance() test
         MaintenanceMgt maintenanceMgt=(MaintenanceMgt) context.getBean("maintenanceMgt");
-        maintenanceMgt.addMaintenance(maintenance);
-        maintenanceMgt.addMaintenance(maintenance2);
-        maintenanceMgt.scheduleMaintenance(maintenanceRequest,facilityProblem);
-        maintenanceMgt.scheduleMaintenance(maintenanceRequest2,facilityProblem2);
+        //maintenanceMgt.scheduleMaintenance(maintenance);
+        //maintenanceMgt.scheduleMaintenance(maintenance2);
         //list FacilityProblems
         maintenanceMgt.listFacilityProblems();
         //list Maintenance
         maintenanceMgt.listMaintenance();
         //list MaintenanceRequests
-        maintenanceMgt.listMaintRequests();
-
-
-
-
-
-        //add the above two Maintenance to MaintenanceMgt
-
-        //Call listInspections method to check the result
-        //inspectionMgt.listInspections();
-
+        maintenanceMgt.listMaintenanceRequests();
+        //calc downtime
+        System.out.println("The downtime of the facility is: ");
+        System.out.println(maintenance.calcDownTimeForFacility());
+        //calcMiantenanceCostForFacility
+        System.out.println("The Miantenance Cost is: ");
+        System.out.println(maintenance.calcMaintenanceCostForFacility());
+        //calc rate
+        System.out.println("The problem rate per hour is: ");
+        System.out.println(maintenance.calcProblemRateForFacility());
 
     }
 }

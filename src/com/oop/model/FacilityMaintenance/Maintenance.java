@@ -12,10 +12,6 @@ public interface Maintenance {
 
     public void setFacilityId(String newBuildingId);
 
-    public String getProblemType();
-
-    public void setProblemType(String newProblemType);
-
     public String getWorkerName();
 
     public void setWorkerName(String newWorkerName);
@@ -24,14 +20,33 @@ public interface Maintenance {
 
     public void setWorkerContactNum(String newNumber);
 
-    public Date getStartDateTime() ;
+    public Date getStartDateTime();
+
     public void setStartDateTime(Date newStartDate);
 
     public Date getEndDateTime();
 
     public void setEndDateTime(Date newEndDate);
 
+    public MaintenanceRequest getMaintenanceRequest();
+
+    public void setMaintenanceRequest(MaintenanceRequest maintenanceRequest);
+
+    public MaintenanceCost getMaintenanceCost();
+
+    public void setMaintenanceCost(MaintenanceCost maintenanceCost);
+
+    public FacilityProblem getFacilityProblem();
+
+    public void setFacilityProblem(FacilityProblem facilityProblem);
+
     public long getTimeDurationInHour(Date start, Date end);
+
+    public double calcDownTimeForFacility();
+
+    public double calcMaintenanceCostForFacility();
+
+    public double calcProblemRateForFacility();
 
     public String toString();
 }

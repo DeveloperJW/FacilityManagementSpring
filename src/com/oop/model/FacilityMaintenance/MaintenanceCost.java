@@ -4,9 +4,10 @@ import com.oop.model.Facility.Facility;
 
 import java.util.Date;
 
-public interface MaintenanceCost extends Maintenance{
+public interface MaintenanceCost{
 
     //methods
+
     public String getMaintenanceReqId();
 
     public void setMaintenanceReqId(String newReqId);
@@ -15,11 +16,7 @@ public interface MaintenanceCost extends Maintenance{
 
     public void setMaterialCost(double newMaterialCost);
 
-    /**
-     * getLaborCost() method
-     * @return the total labor cost based on maintenance time duration
-     */
-    public double getLaborCost();
+    public double getLaborCost(Date start, Date end);
 
     public void setLaborCost(double newLaborCost);
 

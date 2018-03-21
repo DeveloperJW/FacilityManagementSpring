@@ -2,7 +2,7 @@ package com.oop.model.FacilityMaintenance;
 
 import com.oop.model.Facility.Facility;
 
-public class FacilityProblemImpl extends MaintenanceRequestImpl {
+public class FacilityProblemImpl implements FacilityProblem{
     private String maintProblemId;
     private String maintProblemType;
     private String maintProblemDetails;
@@ -10,7 +10,6 @@ public class FacilityProblemImpl extends MaintenanceRequestImpl {
 
     public FacilityProblemImpl(){
         //default constructor
-        super();
     }
 
     public String getMaintProblemId() {
@@ -46,7 +45,7 @@ public class FacilityProblemImpl extends MaintenanceRequestImpl {
     }
 
     public String toString(){
-        String result="Facility Name: "+this.getFacility().getFacilityName()+"\n";
+        String result="";
         result+="Problem Type: "+this.maintProblemType+"\n";
         result+="Problem details: "+this.maintProblemDetails+"\n";
         result+="Current status: "+this.fixedOrNot+"\n";

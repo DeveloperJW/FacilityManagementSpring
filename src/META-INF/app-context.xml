@@ -31,16 +31,23 @@
         <property name="facilitySchedule" ref="facilitySchedule"/>
         <property name="customer" ref="customer"/>
     </bean>
-    <bean id="usageMgt" class="com.oop.model.FacilityUse.UsageMgtImpl" scope="prototype"></bean>
+    <bean id="usageMgt" class="com.oop.model.FacilityUse.UsageMgtImpl" scope="prototype">
+    </bean>
     <bean id="facilityProblem" class="com.oop.model.FacilityMaintenance.FacilityProblemImpl" scope="prototype"></bean>
-    <bean id="maintenance" class="com.oop.model.FacilityMaintenance.MaintenanceImpl" scope="prototype">
-        
+    <bean id="maintenanceRequest" class="com.oop.model.FacilityMaintenance.MaintenanceRequestImpl" scope="prototype">
+        <property name="customer" ref="customer"/>
+        <property name="facility" ref="facility"/>
     </bean>
     <bean id="maintenanceCost" class="com.oop.model.FacilityMaintenance.MaintenanceCostImpl" scope="prototype">
     </bean>
+    <bean id="maintenance" class="com.oop.model.FacilityMaintenance.MaintenanceImpl" scope="prototype">
+        <property name="facilityProblem" ref="facilityProblem"/>
+        <property name="maintenanceCost" ref="maintenanceCost"/>
+        <property name="maintenanceRequest" ref="maintenanceRequest"/>
+    </bean>
     <bean id="maintenanceMgt" class="com.oop.model.FacilityMaintenance.MaintenanceMgtImpl" scope="prototype">
     </bean>
-    <bean id="maintenanceRequest" class="com.oop.model.FacilityMaintenance.MaintenanceRequestImpl" scope="prototype"></bean>
+
 
 
 </beans>

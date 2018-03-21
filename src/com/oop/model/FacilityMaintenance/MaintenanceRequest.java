@@ -15,14 +15,6 @@ public interface MaintenanceRequest{
 
     public void setReqDate(Date newReqDate);
 
-    public String getCustomerId();
-
-    public void setCustomerId(String newCustId);
-
-    public String getUnitId();
-
-    public void setUnitId(String newUnitId);
-
     public Customer getCustomer();
 
     public void setCustomer(Customer customer);
@@ -30,6 +22,8 @@ public interface MaintenanceRequest{
     public Facility getFacility();
 
     public void setFacility(Facility facility);
+
+    public String makeFacilityMaintRequest();
 
     public String toString();
 }

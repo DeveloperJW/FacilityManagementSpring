@@ -3,7 +3,7 @@ package com.oop.model.FacilityMaintenance;
 import java.util.Date;
 
 public interface Maintenance {
-    //methods
+
     public String getMaintenanceId();
 
     public void setMaintenanceId(String newMaintId);

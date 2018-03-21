@@ -5,6 +5,7 @@ import com.oop.model.FacilityMaintenance.*;
 import com.oop.model.FacilityUse.*;
 import com.oop.model.Service.CustomerService;
 import com.oop.model.Service.FacilityService;
+import com.oop.model.Service.MaintenanceService;
 import javafx.application.Application;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -111,8 +112,8 @@ public class FacilityMaintClient {
 
 
         //set up the first example Maintenance
-        //Maintenance maintenance=(Maintenance) context.getBean("maintenance");
-        MaintenanceImpl maintenance=new MaintenanceImpl();
+        Maintenance maintenance=(Maintenance) context.getBean("maintenance");
+        //MaintenanceImpl maintenance=new MaintenanceImpl();
         maintenance.setWorkerName("Mike Rose");
         maintenance.setMaintenanceId("Maintenance-1");
         Date d_s = sdf.parse("10/03/2018");
@@ -123,8 +124,8 @@ public class FacilityMaintClient {
         //might change from String to Facility Problem
 
         //set up the second example Maintenance
-        //Maintenance maintenance2=(Maintenance) context.getBean("maintenance");
-        MaintenanceImpl maintenance2=new MaintenanceImpl();
+        Maintenance maintenance2=(Maintenance) context.getBean("maintenance");
+        //MaintenanceImpl maintenance2=new MaintenanceImpl();
         maintenance2.setFacilityId(facility.getFacilityId());
         maintenance2.setWorkerName("Mike Rose");
         maintenance2.setMaintenanceId("Maintenance-2");
@@ -155,8 +156,8 @@ public class FacilityMaintClient {
 
         //scheduleMaintenance() test
         MaintenanceMgt maintenanceMgt=(MaintenanceMgt) context.getBean("maintenanceMgt");
-        //maintenanceMgt.scheduleMaintenance(maintenance);
-        //maintenanceMgt.scheduleMaintenance(maintenance2);
+        maintenanceMgt.scheduleMaintenance(maintenance);
+        maintenanceMgt.scheduleMaintenance(maintenance2);
         //list FacilityProblems
         maintenanceMgt.listFacilityProblems();
         //list Maintenance

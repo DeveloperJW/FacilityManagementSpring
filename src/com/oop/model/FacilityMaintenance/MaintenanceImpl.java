@@ -2,7 +2,7 @@ package com.oop.model.FacilityMaintenance;
 
 import java.util.Date;
 
-public class MaintenanceImpl {
+public class MaintenanceImpl implements Maintenance {
     private String maintenanceId;
     private String facilityId;
     private String workerName;

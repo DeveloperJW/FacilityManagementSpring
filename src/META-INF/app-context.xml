@@ -47,6 +47,9 @@
     </bean>
     <bean id="maintenanceMgt" class="com.oop.model.FacilityMaintenance.MaintenanceMgtImpl" scope="prototype">
     </bean>
+    <bean id="maintenanceService" class="com.oop.model.Service.MaintenanceService" scope="prototype">
+        <property name="maintenance" ref="maintenance"/>
+    </bean>
 
 
 
